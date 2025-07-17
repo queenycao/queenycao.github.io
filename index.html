@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Mobility GAN</title>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.14.0/dist/ort.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mobility Network Generator</h1>
+        
+        <div class="controls">
+            <select id="day-select">
+                <option value="0">Monday</option>
+                <option value="1">Tuesday</option>
+                <option value="2">Wednesday</option>
+                <option value="3">Thursday</option>
+                <option value="4">Friday</option>
+                <option value="5">Saturday</option>
+                <option value="6">Sunday</option>
+            </select>
+            
+            <button id="generate-btn">Generate Heatmap</button>
+        </div>
+        
+        <div class="output">
+            <canvas id="heatmap" width="256" height="256"></canvas>
+            <div id="loading">Model loading... (may take 10-30 seconds)</div>
+        </div>
+    </div>
+</body>
+</html>
