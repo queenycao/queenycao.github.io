@@ -7,7 +7,7 @@ async function initModel() {
     try {
         document.getElementById('loading').textContent = "Loading model...";
         modelSession = await ort.InferenceSession.create(
-  "https://drive.google.com/file/d/1a9JaFJroxtcewaWQLxbG4cnuooKTXkyv/view?usp=sharing"
+  "https://drive.google.com/uc?export=download&id=1a9JaFJroxtcewaWQLxbG4cnuooKTXkyv"
 );
         document.getElementById('loading').textContent = "Model loaded! Ready to generate.";
         console.log("Model loaded successfully");
