@@ -4,18 +4,24 @@ const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 
 // Initialize ONNX model
 async function initModel() {
-    try {
-        document.getElementById('loading').textContent = "Loading model...";
-        modelSession = await ort.InferenceSession.create(
-  "https://drive.google.com/uc?export=download&id=1a9JaFJroxtcewaWQLxbG4cnuooKTXkyv"
-);
-        document.getElementById('loading').textContent = "Model loaded! Ready to generate.";
-        console.log("Model loaded successfully");
-    } catch (error) {
-        console.error("Failed to load model:", error);
-        document.getElementById('loading').textContent = "Error loading model. Check console.";
-    }
+  try {
+    console.log("Loading model...");
+    const session = await ort.InferenceSession.create(
+      "https://drive.google.com/uc?export=download&id=1a9JaFJroxtcewaWQLxbG4cnuooKTXkyv",
+      { executionProviders: ['wasm'] }  // Force WebAssembly backend
+    );
+    console.log("✅ Model loaded!", session);
+    return session;
+  } catch (e) {
+    console.error("❌ Model loading failed:", e);
+    throw e;  // Rethrow to see the full error in console
+  }
 }
+
+// Usage
+initModel().then(session => {
+  // Now use `session` for predictions
+}).catch(console.error);
 
 // Generate heatmap
 async function generateHeatmap() {
