@@ -7,7 +7,7 @@ async function initModel() {
     try {
         document.getElementById('loading').textContent = "Loading model...";
         modelSession = await ort.InferenceSession.create(
-  "https://cdn.jsdelivr.net/gh/queenycao/queenycao.github.io@gh-pages/model/mogan.onnx"
+  "https://github.com/queenycao/queenycao.github.io/raw/gh-pages/model/mogan.onnx"
 );
         document.getElementById('loading').textContent = "Model loaded! Ready to generate.";
         console.log("Model loaded successfully");
